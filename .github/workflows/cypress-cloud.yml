@@ -29,26 +29,26 @@ jobs:
           CYPRESS_RECORD_KEY: 92b1b150-b9c2-4132-8096-cfcd555f026e
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   cypress-e2e-chrome:
-    needs: cypress-e2e-electron
-    runs-on: ubuntu-latest
-    container:
-      image: cypress/browsers:node-18.16.0-chrome-114.0.5735.133-1-ff-114.0.2-edge-114.0.1823.51-1
-      options: --user 1001
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3.5.3
+   needs: cypress-e2e-electron
+   runs-on: ubuntu-latest
+   container:
+     image: cypress/browsers:node-18.16.0-chrome-114.0.5735.133-1-ff-114.0.2-edge-114.0.1823.51-1
+     options: --user 1001
+   steps:
+     - name: Get code
+       uses: actions/checkout@v3.5.3
         
-      - name: Cypress run
-        uses: cypress-io/github-action@v5.8.2
-        with:
-          install-command: yarn install
-          browser: chrome
-          record: true
-          group: UI Chrome
-          spec: ${{ github.evemt.inputs.spec }}
-        env:
-          CYPRESS_RECORD_KEY: 92b1b150-b9c2-4132-8096-cfcd555f026e
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     - name: Cypress run
+       uses: cypress-io/github-action@v5.8.2
+       with:
+         install-command: yarn install
+         browser: chrome
+         record: true
+         group: UI Chrome
+         spec: ${{ github.evemt.inputs.spec }}
+       env:
+         CYPRESS_RECORD_KEY: 92b1b150-b9c2-4132-8096-cfcd555f026e
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   cypress-e2e-firefox:
     needs: cypress-e2e-electron
     runs-on: ubuntu-latest
@@ -69,4 +69,4 @@ jobs:
           spec: ${{ github.evemt.inputs.spec }}
         env:
           CYPRESS_RECORD_KEY: 92b1b150-b9c2-4132-8096-cfcd555f026e
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
